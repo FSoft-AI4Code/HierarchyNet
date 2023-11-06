@@ -1,0 +1,82 @@
+batch_size: 64
+checkpoint: 
+  dir: checkpoints/emse
+  old_checkpoint: 
+  tmp: checkpoints/emse/tmp
+checkpoint_per_epoch: 1
+clip_gradient: null
+attn_type: general
+dataset_paths:
+  test_lst: Datasets/emse/test
+  train_lst: Datasets/emse/train
+  valid_lst: Datasets/emse/val
+early_stopping:
+  patience: 20
+epochs: 200
+etypes:
+- control_flow_edge
+- next_stmt_edge
+- ast_edge
+- data_flow_edge
+channels:
+  in_dim: 768
+  out_dim: 768
+log:
+  file: logs/nocopy_logfile
+dropout_decoder: 0.15
+normalization: null
+max_seq_length: 30
+vocab:
+  node_type: vocab/node_types.txt
+  code_tokenizer: Datasets/emse/code-sum-tokenizer-bpe-esme.json
+  text_tokenizer: Datasets/emse/text-sum-tokenizer-bpe-esme.json
+max_src_len: 5000
+vocab_type_size: 50
+max_tgt_len: 5000
+vocab_size:
+  token: 30000
+  type: 165
+  tgt: 30000
+loss_weights:
+  token: 1.25
+  type: 1
+  cls: 0.1
+dropout_emb: 0.15
+trans_drop: 0.15
+max_relative_pos: [48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48]
+use_neg_dist: true
+use_all_enc_layers: false
+num_layers:
+  transformer_encoder: 12
+  transformer_decoder: 12
+  tree_nn: 1
+num_heads:
+  transformer_encoder: 12
+  transformer_decoder: 12
+  d_k: 64
+  d_v: 64
+  d_ff: 3072
+  gnn: 12
+num_steps:
+  gnn: 2
+split_decoder: false
+coverage_attn: false
+reload_decoder_state: false
+layer_wise_attn: false
+dropout_rate: 0.1
+tree_aggr: attention
+optimizer:
+  name: AdamW
+  params:
+    lr: 1.2e-4
+    weight_decay: 0.05
+scheduler:
+  num_warmup_steps: 6400
+  num_training_epochs: 50
+wandb:
+  project: Small-EMSE
+  name: nocopy
+copy_attn:
+  apply: 0
+  context: general
+limit_tgt_len: 23

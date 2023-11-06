@@ -1,0 +1,18 @@
+WANDB=OFFLINE CUDA_VISIBLE_DEVICES=0 python -W ignore main/test.py \
+--data_workers 5 \
+--device_index 0 \
+--config_path configs/config_emse_nocopy.yml \
+--uncase True \
+--max_examples -1 \
+--max_src_len 150 \
+--max_tgt_len 24 \
+--test_batch_size 64 \
+--beam_size 1 \
+--n_best 1 \
+--block_ngram_repeat 3 \
+--stepwise_penalty False \
+--coverage_penalty none \
+--length_penalty none \
+--beta 0 \
+--gamma 0 \
+--replace_unk
