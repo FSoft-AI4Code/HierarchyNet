@@ -1,4 +1,4 @@
-### HierarchyNet: Learning to Summarize Source Code with Heterogeneous Representations
+## [EACL 2024] HierarchyNet: Learning to Summarize Source Code with Heterogeneous Representations
 
 ***
 
